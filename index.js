@@ -35,12 +35,16 @@ cron.schedule('*/2 * * * * *', () => {
         if(response.statusCode != 200){
             failedWikiLinks.push(noWikiLinks[current]);
             return current++;
-        }else if(response.responseUrl.includes('#') || response.responseUrl.includes('(Disambiguation)')|| response.responseUrl.includes('Bows')|| response.responseUrl.includes('Swords') || json.internalname.includes('BUILDER')){
+        }else if(response.responseUrl.includes('(Disambiguation)')|| response.responseUrl.includes('Bows')|| response.responseUrl.includes('Swords') || json.internalname.includes('BUILDER')){
             failedWikiLinks.push(noWikiLinks[current]);
             return current++;
+        }else if(response.responseUrl.includes('#')){
+            json.infoType = "WIKI_URL";
+            json.info = [response.responseUrl.slice(0,response.responseUrl.indexOf("#"))];
+        }else{
+            json.infoType = "WIKI_URL";
+            json.info = [response.responseUrl];
         }
-        json.infoType = "WIKI_URL";
-        json.info = [response.responseUrl];
 
         addedWikiLinks.push(noWikiLinks[current]);
 
