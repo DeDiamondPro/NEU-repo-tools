@@ -1,5 +1,6 @@
 const https = require('https');
 const fs = require('fs');
+var cron = require('node-cron');
 
 var fileObjs = fs.readdirSync("repo/items", { withFileTypes: true });
 var noWikiLinks = new Array();
@@ -14,12 +15,16 @@ for(var i in fileObjs){
     var json = JSON.parse(rawdata);
     if(!json.hasOwnProperty("info") && json.itemid != "minecraft:enchanted_book" && json.displayname != "§fMusic Disc"){
         noWikiLinks.push(fileObjs[i].name);
+        console.log(getName(json.displayname));
     }
 }
 
+cron.schedule('* * * * *', () => {
+    console.log('running a task every minute');
+});
 
 function getName(displayName){
-    var loc = displayName.indexOf('§');
+    return displayName.slice(2);
 }
 
 /*var writtenData = JSON.stringify(noWikiLinks, null, 2);

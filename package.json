@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/DeDiamondPro/NEU-wiki-links-adder/issues"
   },
-  "homepage": "https://github.com/DeDiamondPro/NEU-wiki-links-adder#readme"
+  "homepage": "https://github.com/DeDiamondPro/NEU-wiki-links-adder#readme",
+  "dependencies": {
+    "node-cron": "^2.0.3"
+  }
 }
