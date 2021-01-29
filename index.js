@@ -45,7 +45,7 @@ cron.schedule('*/2 * * * * *', () => {
             json.infoType = "WIKI_URL";
             json.info = [response.responseUrl];
         }
-
+        json.modver = "2.0.0-REL";
         addedWikiLinks.push(noWikiLinks[current]);
 
         var writtenData = JSON.stringify(json, null, 2);
