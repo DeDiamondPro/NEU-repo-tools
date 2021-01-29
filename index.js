@@ -6,6 +6,7 @@ var fileObjs = fs.readdirSync("repo/items", { withFileTypes: true });
 var noWikiLinks = new Array();
 var addedWikiLinks = new Array(); 
 var failedWikiLinks = new Array();  
+var busy = false;
 var current = 0;
 for(var i in fileObjs){
     var rawdata = fs.readFileSync(`repo/items/${fileObjs[i].name}`, function (err){
@@ -20,6 +21,10 @@ for(var i in fileObjs){
 }
 
 cron.schedule('*/2 * * * * *', () => {
+    if(busy){
+        return console.log("waiting");
+    }
+    busy = true
     var rawdata = fs.readFileSync(`repo/items/${noWikiLinks[current]}`, function (err){
         if(err){
             return;
@@ -34,9 +39,11 @@ cron.schedule('*/2 * * * * *', () => {
         console.log(response.responseUrl, json.displayname, response.statusCode);
         if(response.statusCode != 200){
             failedWikiLinks.push(noWikiLinks[current]);
+            busy = false;
             return current++;
         }else if(response.responseUrl.includes('(Disambiguation)')|| response.responseUrl.includes('Bows')|| response.responseUrl.includes('Swords') || json.internalname.includes('BUILDER')){
             failedWikiLinks.push(noWikiLinks[current]);
+            busy = false;
             return current++;
         }else if(response.responseUrl.includes('#')){
             json.infoType = "WIKI_URL";
@@ -68,6 +75,7 @@ cron.schedule('*/2 * * * * *', () => {
         });
 
         current++;
+        busy = false;
     });
     request.end();
 });
