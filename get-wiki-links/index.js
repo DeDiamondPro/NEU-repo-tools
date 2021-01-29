@@ -16,7 +16,7 @@ for(var i in fileObjs){
     });
     var json = JSON.parse(rawdata);
     if(!json.hasOwnProperty("info") && json.itemid != "minecraft:enchanted_book" &&  json.itemid != "minecraft:potion"){
-        if(!json.hasOwnProperty(vanilla)){
+        if(!json.hasOwnProperty("vanilla")){
             noWikiLinks.push(fileObjs[i].name);
         }else if(!json.vanilla){
             noWikiLinks.push(fileObjs[i].name);
