@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>NEU auto wiki link verifier</h1>
+    <p>
+    Is this correct? <br />
+    Displayname: <span id="dn"></span> <br />
+    InteralName: <span id="in"></span><br />
+    Link: <a id = "link" target="_blank"><span id="ln"></span></a>
+    </p>
+    <button id="yes">yes</button>
+    <button id="no">no</button>
+    <button id="refresh">refresh</button>
+    <script>
+        var Ln = "";
+
+      const button = document.getElementById('yes');
+      button.addEventListener('click', async event => {
+        const data = {input : "yes"};
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        };
+        const response = await fetch('/api', options);
+        const json = await response.json();
+        console.log(json);
+        document.getElementById("dn").textContent = json.DN;
+        document.getElementById("in").textContent = json.IN;
+        document.getElementById("ln").textContent = json.LN;
+        document.getElementById("link").setAttribute("href",document.getElementById("ln").textContent);
+      });
+
+      const button2 = document.getElementById('no');
+      button2.addEventListener('click', async event => {
+        const data = {input : "no"};
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        };
+        const response = await fetch('/api', options);
+        const json = await response.json();
+        console.log(json);
+        document.getElementById("dn").textContent = json.DN;
+        document.getElementById("in").textContent = json.IN;
+        document.getElementById("ln").textContent = json.LN;
+        document.getElementById("link").setAttribute("href",document.getElementById("ln").textContent);
+      });
+
+      const button3 = document.getElementById('refresh');
+      button3.addEventListener('click', async event => {
+        const data = {input : "refresh"};
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        };
+        const response = await fetch('/api', options);
+        const json = await response.json();
+        console.log(json);
+        document.getElementById("dn").textContent = json.DN;
+        document.getElementById("in").textContent = json.IN;
+        document.getElementById("ln").textContent = json.LN;
+        document.getElementById("link").setAttribute("href",document.getElementById("ln").textContent);
+      });
+    </script>
+  </body>
+</html>

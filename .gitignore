@@ -106,3 +106,5 @@ dist
 get-wiki-links/repo/
 get-wiki-links/info/
 get-wiki-links/modified/
+verifier/verified
+verifier/to-be-verified
