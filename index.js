@@ -56,7 +56,7 @@ cron.schedule('*/2 * * * * *', () => {
         addedWikiLinks.push(noWikiLinks[current]);
 
         var writtenData = JSON.stringify(json, null, 2);
-        fs.writeFileSync(`modified/${noWikiLinks[current]}`, writtenData, function (err){
+        fs.writeFileSync(`modified/${json.internalname}.json`, writtenData, function (err){
             if (err) {
                 return console.log(err);
                 }
