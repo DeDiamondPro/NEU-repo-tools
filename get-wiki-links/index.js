@@ -15,7 +15,7 @@ for(var i in fileObjs){
         }
     });
     var json = JSON.parse(rawdata);
-    if(!json.hasOwnProperty("info") && json.itemid != "minecraft:enchanted_book" && json.displayname != "§fMusic Disc" && json.itemid != "minecraft:potion"){
+    if(!json.hasOwnProperty("info") && json.itemid != "minecraft:enchanted_book" &&  json.itemid != "minecraft:potion" && !json.hasOwnProperty(vanilla) &&!json.vanilla){
         noWikiLinks.push(fileObjs[i].name);
     }
 }
@@ -38,10 +38,6 @@ cron.schedule('*/2 * * * * *', () => {
     }, response => {
         console.log(response.responseUrl, json.displayname, response.statusCode);
         if(response.statusCode != 200){
-            failedWikiLinks.push(noWikiLinks[current]);
-            busy = false;
-            return current++;
-        }else if(response.responseUrl.includes('(Disambiguation)')|| response.responseUrl.includes('Bows')|| response.responseUrl.includes('Swords') || json.internalname.includes('BUILDER')){
             failedWikiLinks.push(noWikiLinks[current]);
             busy = false;
             return current++;
