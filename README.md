@@ -27,3 +27,5 @@ To use:
 
 all uncorect changes will be deleted
 all correct changes will be moved to verified
+
+*Note: these programs crash when they're done, can't be bothered to fix it
