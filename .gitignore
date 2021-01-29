@@ -103,6 +103,6 @@ dist
 # TernJS port file
 .tern-port
 
-repo/
-info/
-modified/
+get-wiki-links/repo/
+get-wiki-links/info/
+get-wiki-links/modified/
