@@ -10,7 +10,10 @@
     </p>
   </body>
   <script>
-    const url = window.location.href;
-    console.log(url.substr(url.lastIndexOf("=")+1));
+    /*const url = window.location.href;
+    const data = url.substr(url.lastIndexOf("=")+1);*/
+    const data = window.location.search.slice(1);
+    //console.log(document.getElementById("data").innerHTML);
+    console.log(data);
   </script>
 </html>
