@@ -1,0 +1,23 @@
+{
+  "name": "neu-wiki-links-adder",
+  "version": "1.0.0",
+  "description": "This repository is made for a program I'm developing to automatically add (some) wiki links to the NEU json repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeDiamondPro/NEU-wiki-links-adder.git"
+  },
+  "author": "DeDiamondPro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DeDiamondPro/NEU-wiki-links-adder/issues"
+  },
+  "homepage": "https://github.com/DeDiamondPro/NEU-wiki-links-adder#readme",
+  "dependencies": {
+    "follow-redirects": "^1.13.2",
+    "node-cron": "^2.0.3"
+  }
+}
