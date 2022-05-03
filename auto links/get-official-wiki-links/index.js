@@ -17,7 +17,7 @@ for(var i in fileObjs){
     const json = JSON.parse(rawdata);
     let foundLink = false;
     for (let link of json.info) {
-        if (link.startsWith('wiki.hypixel.net') {
+        if (link.startsWith('wiki.hypixel.net')) {
             foundLink = true;
             break;
         }
