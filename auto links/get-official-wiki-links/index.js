@@ -15,7 +15,14 @@ for(var i in fileObjs){
         }
     });
     const json = JSON.parse(rawdata);
-    if (json.itemid != "minecraft:enchanted_book" && json.itemid != "minecraft:potion")
+    let foundLink = false;
+    for (let link of json.info) {
+        if (link.startsWith('wiki.hypixel.net') {
+            foundLink = true;
+            break;
+        }
+    } 
+    if (!foundLink && json.itemid != "minecraft:enchanted_book" && json.itemid != "minecraft:potion")
         noWikiLinks.push(fileObjs[i].name);
 }
 
